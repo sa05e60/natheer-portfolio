@@ -67,7 +67,7 @@ const Hero = () => {
       {/* NAME — over body, clear of subtitle */}
       <div className="absolute z-20 w-full text-center" style={{ top: "52%", left: 0, right: 0 }}>
         <div
-          className="font-bebas leading-[0.88] tracking-[0.1em] select-none w-full px-4"
+          className={`font-bebas select-none w-full px-4 ${isRtl ? 'leading-[1.5]' : 'leading-[0.88] tracking-[0.1em]'}`}
           style={{ fontSize: "clamp(3rem, 10vw, 9rem)" }}
           aria-label="Nadheer Waleed Jasim"
         >
@@ -92,7 +92,7 @@ const Hero = () => {
             transition={{ delay: 1.1, duration: 0.9 }}
             dir="ltr"
           >
-            <div className="whitespace-nowrap flex animate-marquee" style={{ color: "#8B9E6B", fontFamily: "var(--font-teko), sans-serif", fontSize: "0.85rem", letterSpacing: "0.25em", textTransform: "uppercase", lineHeight: "normal", direction: isRtl ? "rtl" : "ltr" }}>
+            <div className="whitespace-nowrap flex animate-marquee" style={{ color: "#8B9E6B", fontFamily: "var(--font-teko), sans-serif", fontSize: "0.85rem", letterSpacing: isRtl ? "0" : "0.25em", textTransform: "uppercase", lineHeight: "normal", direction: isRtl ? "rtl" : "ltr" }}>
               <div className="flex-shrink-0 flex">
                 <span className={`px-2 ${isRtl ? 'pb-1' : ''}`}>{t('hero.marquee')}</span>
                 <span className={`px-2 ${isRtl ? 'pb-1' : ''}`}>{t('hero.marquee')}</span>
