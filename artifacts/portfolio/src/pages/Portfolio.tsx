@@ -65,9 +65,9 @@ const Hero = () => {
       </motion.div>
 
       {/* NAME — over body, clear of subtitle */}
-      <div className="absolute z-20 w-full text-center" style={{ top: "52%", left: 0, right: 0 }}>
+      <div className={`absolute z-20 w-full text-center ${isRtl ? 'top-[42%] md:top-[45%]' : 'top-[52%]'}`} style={{ left: 0, right: 0 }}>
         <div
-          className={`font-bebas select-none w-full px-4 ${isRtl ? 'leading-[1.5]' : 'leading-[0.88] tracking-[0.1em]'}`}
+          className={`font-bebas select-none w-full px-4 ${isRtl ? 'leading-[1.1] tracking-normal' : 'leading-[0.88] tracking-[0.1em]'}`}
           style={{ fontSize: "clamp(3rem, 10vw, 9rem)" }}
           aria-label="Nadheer Waleed Jasim"
         >
