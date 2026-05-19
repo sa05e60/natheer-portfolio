@@ -20,7 +20,8 @@ i18n
 
 i18n.on('languageChanged', (lng) => {
   if (typeof document !== 'undefined') {
-    document.documentElement.lang = lng;
+    const baseLang = lng.split('-')[0];
+    document.documentElement.lang = baseLang;
     document.documentElement.dir = i18n.dir(lng);
   }
 });

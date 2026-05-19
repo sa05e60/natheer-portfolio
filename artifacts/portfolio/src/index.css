@@ -36,9 +36,9 @@
   --alt: 60 16% 7%;
 }
 
-html[lang="ar"], 
-html[lang="ar"] body, 
-html[lang="ar"] * {
+html[lang^="ar"], 
+html[lang^="ar"] body, 
+html[lang^="ar"] * {
   font-family: 'Noto Kufi Arabic', sans-serif !important;
   letter-spacing: normal !important;
 }
