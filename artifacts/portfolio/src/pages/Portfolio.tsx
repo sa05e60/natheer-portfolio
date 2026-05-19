@@ -2,142 +2,126 @@ import React from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { GrainOverlay, CursorDot, StickyNav, PosterRule, ThinRule, OrnamentalDivider, Reveal } from "../components/Editorial";
 
+const nameChars = "NADHEER WALEED JASIM".split("");
+
 const Hero = () => {
   const { scrollY } = useScroll();
-  const photoY = useTransform(scrollY, [0, 700], [0, 60]);
-  const photoScale = useTransform(scrollY, [0, 700], [1, 1.06]);
+  const photoScale = useTransform(scrollY, [0, 800], [1, 1.12]);
+  const overlayOpacity = useTransform(scrollY, [0, 400], [0.45, 0.72]);
 
   return (
     <section
       id="hero"
-      className="relative min-h-[100vh] overflow-hidden bg-background flex flex-col items-center justify-center px-4"
+      className="relative min-h-[100vh] overflow-hidden bg-background"
     >
-      {/* Corner brackets */}
+      {/* Full-bleed photo */}
       <motion.div
-        className="absolute top-8 left-8 w-12 h-12 border-t-[2px] border-l-[2px] border-primary"
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.6 }}
-      />
-      <motion.div
-        className="absolute top-8 right-8 w-12 h-12 border-t-[2px] border-r-[2px] border-border"
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.6 }}
-      />
-      <motion.div
-        className="absolute bottom-8 left-8 w-12 h-12 border-b-[2px] border-l-[2px] border-border"
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.6 }}
-      />
-      <motion.div
-        className="absolute bottom-8 right-8 w-12 h-12 border-b-[2px] border-r-[2px] border-primary"
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.6 }}
-      />
-
-      {/* Left edge rotated label */}
-      <motion.div
-        className="absolute left-5 top-1/2 -translate-y-1/2 hidden md:block"
-        initial={{ opacity: 0, x: -16 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 2.2, duration: 0.7, ease: "easeOut" }}
-      >
-        <span className="section-label-rotated">PORTFOLIO — 2026</span>
-      </motion.div>
-      <motion.div
-        className="absolute right-5 top-1/2 -translate-y-1/2 hidden md:block"
-        initial={{ opacity: 0, x: 16 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 2.2, duration: 0.7, ease: "easeOut" }}
-      >
-        <span className="section-label-rotated">BAGHDAD · IRAQ</span>
-      </motion.div>
-
-      {/* TOP LINE — "NADHEER" slides in from left */}
-      <div className="w-full max-w-5xl flex justify-center overflow-hidden mb-4 md:mb-6">
-        <motion.h1
-          className="font-bebas text-foreground tracking-[0.18em] leading-none text-center"
-          style={{ fontSize: "clamp(3.5rem, 12vw, 10rem)" }}
-          initial={{ x: "-110%", opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        >
-          NADHEER
-        </motion.h1>
-      </div>
-
-      {/* CENTER — photo */}
-      <motion.div
-        className="relative"
-        style={{ width: "min(58vw, 380px)", height: "min(74vw, 490px)" }}
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-      >
-        {/* Thin olive frame offset behind */}
-        <div
-          className="absolute border border-primary"
-          style={{ inset: "-10px", opacity: 0.4 }}
-        />
-        <motion.img
-          src="/nadheer-photo.png"
-          alt="Nadheer Waleed Jasim"
-          className="w-full h-full object-cover object-top relative z-10"
-          style={{
-            filter: "contrast(1.1) brightness(1.1)",
-            y: photoY,
-            scale: photoScale,
-          }}
-        />
-      </motion.div>
-
-      {/* BOTTOM LINE — "WALEED JASIM" slides in from right */}
-      <div className="w-full max-w-5xl flex justify-center overflow-hidden mt-4 md:mt-6">
-        <motion.h1
-          className="font-bebas text-foreground tracking-[0.18em] leading-none text-center"
-          style={{ fontSize: "clamp(3.5rem, 12vw, 10rem)" }}
-          initial={{ x: "110%", opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        >
-          WALEED JASIM
-        </motion.h1>
-      </div>
-
-      {/* Animated rule */}
-      <motion.div
-        className="w-full max-w-2xl h-[2px] bg-primary origin-center mt-8 mb-6"
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: 1 }}
-        transition={{ delay: 1.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      />
-
-      {/* Subtitle + contact */}
-      <motion.div
-        className="text-center space-y-2"
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.7, duration: 0.7, ease: "easeOut" }}
-      >
-        <div className="font-teko text-secondary tracking-[0.35em] text-base md:text-lg uppercase">
-          Cybersecurity Engineer&nbsp;&nbsp;✦&nbsp;&nbsp;Baghdad, Iraq
-        </div>
-        <div className="font-cormorant italic text-foreground opacity-50 text-sm tracking-wide">
-          +9647700155986 &nbsp;|&nbsp; natheerwaleed1f@gmail.com
-        </div>
-      </motion.div>
-
-      {/* Scroll hint */}
-      <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute inset-0"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.4, duration: 1 }}
+        transition={{ duration: 1.6, ease: "easeOut" }}
+        style={{ scale: photoScale }}
       >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
-          className="w-[1px] h-10 bg-primary opacity-50"
+        <img
+          src="/nadheer-photo.png"
+          alt="Nadheer Waleed Jasim"
+          className="w-full h-full object-cover object-top"
+          style={{ filter: "contrast(1.08) brightness(0.95)" }}
         />
+      </motion.div>
+
+      {/* Dark blend overlay — photo fades into bg at edges */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        style={{ opacity: overlayOpacity }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.45 }}
+        transition={{ duration: 1.2, delay: 0.4 }}
+      >
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, #0F0E0A 0%, transparent 22%, transparent 60%, #0F0E0A 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to right, #0F0E0A 0%, transparent 20%, transparent 80%, #0F0E0A 100%)" }} />
+      </motion.div>
+
+      {/* Corner labels — top */}
+      <motion.div
+        className="absolute top-10 left-6 md:left-12 z-20"
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+        transition={{ delay: 2.0, duration: 0.8 }}
+      >
+        <span className="font-teko text-primary tracking-[0.35em] text-xs uppercase opacity-60">Portfolio — 2026</span>
+      </motion.div>
+      <motion.div
+        className="absolute top-10 right-6 md:right-12 z-20"
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+        transition={{ delay: 2.0, duration: 0.8 }}
+      >
+        <span className="font-teko text-primary tracking-[0.35em] text-xs uppercase opacity-60">Baghdad · Iraq</span>
+      </motion.div>
+
+      {/* NAME — absolutely pinned over body/chest, top anchored below face */}
+      <div className="absolute z-20 w-full text-center" style={{ top: "58%", left: 0, right: 0 }}>
+        <div
+          className="font-bebas leading-[0.88] tracking-[0.1em] select-none w-full px-4"
+          style={{ fontSize: "clamp(3.8rem, 13vw, 12rem)" }}
+          aria-label="Nadheer Waleed Jasim"
+        >
+          {/* NADHEER — slides in from left */}
+          <div className="overflow-hidden">
+            <motion.div
+              initial={{ x: "-60%", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+              style={{ color: "#E8DFC0", textShadow: "0 4px 60px rgba(0,0,0,0.95), 0 0 120px rgba(0,0,0,0.6)" }}
+            >
+              NADHEER
+            </motion.div>
+          </div>
+
+          {/* Rule draws across */}
+          <motion.div
+            className="w-full h-[1.5px] bg-primary origin-left my-2 md:my-3"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ delay: 1.1, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          />
+
+          {/* WALEED JASIM — slides in from right */}
+          <div className="overflow-hidden">
+            <motion.div
+              initial={{ x: "60%", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.7, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+              style={{ color: "#C4A882", textShadow: "0 4px 60px rgba(0,0,0,0.95), 0 0 120px rgba(0,0,0,0.6)" }}
+            >
+              WALEED JASIM
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* SUBTITLE — bottom strip */}
+      <motion.div
+        className="absolute z-20 bottom-6 md:bottom-8 left-0 right-0 px-6 md:px-12 flex justify-between items-end"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.8, duration: 0.8, ease: "easeOut" }}
+      >
+        <div>
+          <div className="font-teko text-secondary tracking-[0.3em] text-sm md:text-base uppercase">
+            Cybersecurity Engineer
+          </div>
+          <div className="font-cormorant italic text-foreground opacity-40 text-xs md:text-sm tracking-wide mt-0.5">
+            +9647700155986 · natheerwaleed1f@gmail.com
+          </div>
+        </div>
+        <motion.div
+          className="flex items-center gap-2"
+          animate={{ y: [0, 7, 0] }}
+          transition={{ repeat: Infinity, duration: 2.4, ease: "easeInOut" }}
+        >
+          <div className="w-[1px] h-8 bg-primary opacity-40" />
+          <span className="font-teko text-[10px] tracking-[0.3em] text-primary opacity-40 uppercase">Scroll</span>
+        </motion.div>
       </motion.div>
     </section>
   );
