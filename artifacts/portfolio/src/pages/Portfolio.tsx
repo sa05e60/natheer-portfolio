@@ -72,7 +72,7 @@ const Hero = () => {
           aria-label="Nadheer Waleed Jasim"
         >
           {/* NADHEER — slides in from left (or right for Arabic) */}
-          <div className="overflow-hidden py-4 -my-4 pb-8 -mb-8">
+          <div className={`overflow-hidden py-4 -my-4 pb-8 ${isRtl ? '-mb-2 md:-mb-1' : '-mb-8'}`}>
             <motion.div
               initial={{ x: isRtl ? "60%" : "-60%", opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -85,7 +85,7 @@ const Hero = () => {
 
           {/* MARQUEE STRIP (Replaces Rule) */}
           <motion.div
-            className="w-full border-y border-[#3A3A2E] overflow-hidden marquee-container flex items-center my-2 md:my-3 py-1.5"
+            className={`w-full border-y border-[#3A3A2E] overflow-hidden marquee-container flex items-center py-1.5 ${isRtl ? 'my-4 md:my-6' : 'my-2 md:my-3'}`}
             style={{ backgroundColor: "transparent" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -109,7 +109,7 @@ const Hero = () => {
           </motion.div>
 
           {/* WALEED JASIM — slides in from right (or left for Arabic) */}
-          <div className="overflow-hidden py-4 -my-4 pb-8 -mb-8">
+          <div className={`overflow-hidden py-4 -my-4 pb-8 ${isRtl ? '-mb-2 md:-mb-1' : '-mb-8'}`}>
             <motion.div
               initial={{ x: isRtl ? "-60%" : "60%", opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
