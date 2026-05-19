@@ -1,0 +1,73 @@
+Build a personal portfolio website for Nadheer Waleed Jasim, a Cybersecurity Engineer from Baghdad.
+
+AESTHETIC DIRECTION — "80s Retro Classic":
+- Think: vintage newspaper meets analog synthesizer era. NOT cyber/hacker/terminal/neon green.
+- Color palette: warm cream/off-white (#F5F0E8), deep burgundy (#6B1E2A), aged gold (#C9A84C), dark charcoal (#1C1C1C), dusty rose accents.
+- Typography: use Google Fonts — "Playfair Display" for headings (classic serif, editorial), "DM Serif Display" or "Cormorant Garamond" for subheadings, "Libre Baskerville" for body text. Avoid all sans-serif techy fonts.
+- Texture: add a subtle paper grain/noise overlay (CSS noise filter or SVG feTurbulence), like aged parchment.
+- Decorative elements: thin ornamental dividers (— ✦ —), vintage badge shapes, ruled lines, editorial column layouts, subtle halftone dot patterns in backgrounds.
+- Overall feel: a refined, prestigious 1980s design magazine profile — like an editorial spread in an old Esquire or Vogue.
+
+TECH STACK:
+- React (Vite) + Framer Motion for all animations
+- Tailwind CSS for layout
+- No Next.js needed
+
+ANIMATIONS (Framer Motion):
+- Page load: staggered fade-up reveals for each section (delay each by 0.15s)
+- Hero name: letter-by-letter reveal animation
+- Section headers: slide in from left with a vintage underline that draws itself
+- Cards/project tiles: subtle lift + warm shadow on hover (no scale, just translateY(-4px))
+- Scroll-triggered reveals for each section using whileInView
+- Smooth cursor follower (small circular dot, burgundy color)
+
+SECTIONS TO BUILD:
+
+1. HERO SECTION:
+- Full-viewport height
+- Left side: His name "NADHEER WALEED JASIM" in massive Playfair Display, stacked vertically with letter-spacing
+- Subtitle: "Cybersecurity Engineer · Baghdad, Iraq"
+- A circular vintage-framed placeholder for his photo (label it "[ PHOTO ]" with a dashed ornamental border — he will replace it)
+- Decorative ruled lines and ornamental separators
+- Contact info: +9647700155986 | natheerwaleed1f@gmail.com
+
+2. ABOUT / PROFILE SECTION:
+- Two-column editorial layout
+- Left: a pull-quote styled summary of his bio
+- Right: his full bio paragraph from the CV
+- Thin vertical rule dividing the columns
+- Vintage section label: "— PROFILE —"
+
+3. CORE COMPETENCIES:
+- Three vintage "card" columns with ornamental borders
+- Categories: Offensive & Defensive Security / Software Engineering / Technical Strategy
+- List items styled as typeset bullet points (use • or ✦)
+- Section label: "— EXPERTISE —"
+
+4. NOTABLE PROJECTS:
+- Stacked editorial rows, each project gets a bold number (01, 02, 03...) in large faded gold
+- Project name in large serif, description below in smaller body text
+- Thin full-width ruled dividers between projects
+- Projects: Mirai, Print Workflow Manager, Custom Security & Automation Tooling, Eco-Iraq, Advanced Vulnerability Research, Network Defense & Threat Mitigation
+- Section label: "— WORKS —"
+
+5. CERTIFICATIONS & ACHIEVEMENTS:
+- Badge/stamp style layout — circular or rectangular vintage stamp shapes
+- Highlight the CTF achievements prominently (6th/71, 78th/1014, 8th place Ministry CTF)
+- AWS, Cisco CEH listed as credential badges
+- Section label: "— CREDENTIALS —"
+
+6. FOOTER:
+- Centered, minimal
+- Name + year + Baghdad
+- Thin ornamental border top
+- Social/contact links
+
+IMPORTANT NOTES:
+- NO hacker aesthetics — no terminal fonts, no green-on-black, no glitch effects, no matrix rain
+- NO purple gradients, no glassmorphism, no neon
+- Everything should feel warm, aged, prestigious — like printed on quality paper
+- Make it fully responsive (mobile-friendly)
+- The photo placeholder should be a styled circle/oval with the text "Add Photo Here" in italic serif, surrounded by a decorative vintage frame border (CSS only)
+- Use framer-motion's AnimatePresence and motion.div throughout
+- Add a subtle fixed top navigation bar with his initials "N.W.J" as logo and anchor links to sections

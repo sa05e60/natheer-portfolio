@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --font-heading: 'Playfair Display', serif;
+  --font-subheading: 'Cormorant Garamond', serif;
+  --font-body: 'Libre Baskerville', serif;
+}
+
+:root {
+  --background: 37 31% 94%;      /* #F5F0E8 Warm Cream */
+  --foreground: 0 0% 11%;        /* #1C1C1C Dark Charcoal */
+  --primary: 351 56% 27%;        /* #6B1E2A Deep Burgundy */
+  --primary-foreground: 37 31% 94%;
+  --secondary: 44 55% 54%;       /* #C9A84C Aged Gold */
+  --secondary-foreground: 0 0% 11%;
+  --muted: 346 31% 65%;          /* Dusty Rose */
+  --muted-foreground: 0 0% 11%;
+  --border: 0 0% 11%;            /* Charcoal border */
+  --input: 44 55% 54%;
+  --ring: 351 56% 27%;
+  
+  --app-font-sans: 'Libre Baskerville', serif;
+  --app-font-serif: 'Playfair Display', serif;
+  --app-font-mono: 'Cormorant Garamond', serif;
+  
+  --radius: 0;
+}
+
+.dark {
+  /* Using the same palette since it's an editorial statement, but we define just in case */
+  --background: 37 31% 94%;
+  --foreground: 0 0% 11%;
+  --primary: 351 56% 27%;
+  --primary-foreground: 37 31% 94%;
+  --secondary: 44 55% 54%;
+  --secondary-foreground: 0 0% 11%;
+  --muted: 346 31% 65%;
+  --muted-foreground: 0 0% 11%;
+  --border: 0 0% 11%;
+  --input: 44 55% 54%;
+  --ring: 351 56% 27%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    cursor: none; /* Hide default cursor for custom cursor */
+  }
+
+  body {
+    @apply font-body antialiased bg-background text-foreground;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-normal;
+  }
+}
+
+.paper-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.vintage-border {
+  border: 1px solid hsl(var(--foreground));
+  padding: 4px;
+  position: relative;
+}
+.vintage-border::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border: 1px solid hsl(var(--secondary));
+  pointer-events: none;
+}
+
+.editorial-rule {
+  height: 1px;
+  background: hsl(var(--foreground));
+  position: relative;
+}
+.editorial-rule::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: hsl(var(--secondary));
+}
+
+html {
+  scroll-behavior: smooth;
+}
