@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 
 export const GrainOverlay = () => (
   <div className="grain-overlay">
@@ -38,21 +38,61 @@ export const CursorDot = () => {
   );
 };
 
-export const StickyNav = () => (
-  <nav className="sticky top-0 z-50 bg-background border-b-[2px] border-primary">
-    <div className="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
-      <a href="#hero" className="font-bebas text-2xl text-foreground tracking-widest">N.W.J</a>
-      <div className="hidden md:flex gap-8 font-teko uppercase tracking-[0.2em] text-primary">
-        {['Profile', 'Expertise', 'Works', 'Credentials'].map(link => (
-          <a key={link} href={`#${link.toLowerCase()}`} className="relative group hover:text-foreground transition-colors duration-300">
-            {link}
-            <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full" />
-          </a>
-        ))}
+export const StickyNav = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const navLinks = ['Profile', 'Expertise', 'Works', 'Credentials'];
+
+  return (
+    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+      <div className="flex justify-center items-center px-6 py-4 max-w-7xl mx-auto">
+        {/* Desktop links */}
+        <div className="hidden md:flex gap-12 font-teko uppercase tracking-[0.2em] text-primary">
+          {navLinks.map(link => (
+            <a key={link} href={`#${link.toLowerCase()}`} className="relative group hover:text-foreground transition-colors duration-300">
+              {link}
+              <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-primary transition-all duration-300 group-hover:w-full" />
+            </a>
+          ))}
+        </div>
+
+        {/* Mobile toggle */}
+        <button
+          className="md:hidden font-teko uppercase tracking-[0.2em] text-primary w-full text-center cursor-pointer"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
+        >
+          {mobileOpen ? 'CLOSE' : 'MENU'}
+        </button>
       </div>
-    </div>
-  </nav>
-);
+
+      {/* Mobile dropdown */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border overflow-hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+          >
+            <div className="flex flex-col items-center gap-6 py-8 font-teko uppercase tracking-[0.2em] text-primary text-xl">
+              {navLinks.map(link => (
+                <a
+                  key={link}
+                  href={`#${link.toLowerCase()}`}
+                  className="hover:text-foreground transition-colors duration-300"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
+};
 
 export const PosterRule = () => <div className="poster-rule" />;
 export const ThinRule = () => <div className="thin-rule" />;
