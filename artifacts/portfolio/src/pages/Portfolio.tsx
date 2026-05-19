@@ -25,7 +25,7 @@ const Hero = () => {
         <img
           src="/nadheer-photo.png"
           alt="Nadheer Waleed Jasim"
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-contain object-center"
           style={{ filter: "contrast(1.08) brightness(0.95)" }}
         />
       </motion.div>
@@ -58,11 +58,11 @@ const Hero = () => {
         <span className="font-teko text-primary tracking-[0.35em] text-xs uppercase opacity-60">Baghdad · Iraq</span>
       </motion.div>
 
-      {/* NAME — absolutely pinned over body/chest, top anchored below face */}
-      <div className="absolute z-20 w-full text-center" style={{ top: "58%", left: 0, right: 0 }}>
+      {/* NAME — over body, clear of subtitle */}
+      <div className="absolute z-20 w-full text-center" style={{ top: "52%", left: 0, right: 0 }}>
         <div
           className="font-bebas leading-[0.88] tracking-[0.1em] select-none w-full px-4"
-          style={{ fontSize: "clamp(3.8rem, 13vw, 12rem)" }}
+          style={{ fontSize: "clamp(3rem, 10vw, 9rem)" }}
           aria-label="Nadheer Waleed Jasim"
         >
           {/* NADHEER — slides in from left */}
