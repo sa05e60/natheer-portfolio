@@ -1,7 +1,7 @@
 import React from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Trans, useTranslation } from "react-i18next";
-import { GrainOverlay, CursorDot, StickyNav, PosterRule, ThinRule, OrnamentalDivider, Reveal } from "../components/Editorial";
+import { GrainOverlay, StickyNav, PosterRule, ThinRule, OrnamentalDivider, Reveal } from "../components/Editorial";
 
 const Hero = () => {
   const { scrollY } = useScroll();
@@ -193,7 +193,7 @@ const Portfolio = () => {
     <AnimatePresence>
       <div className="min-h-screen relative overflow-x-hidden text-foreground">
         <GrainOverlay />
-        <CursorDot />
+
         <StickyNav />
 
         <main className="mx-auto w-full">
